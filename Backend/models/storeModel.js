@@ -13,6 +13,14 @@ const storeSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  category: {
+    type: String,
+    required: true,
+  },
+  sub_category: {
+    type: String,
+    required: true,
+  },
   rating: {
     type: Number,
     required: true,
