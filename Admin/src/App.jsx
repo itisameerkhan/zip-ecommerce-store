@@ -8,9 +8,11 @@ const App = () => {
     name: "",
     image_url: "",
     description: "",
-    category: "",
-    sub_category: "",
+    category: "men",
+    sub_category: "shirts",
   });
+
+  const [message, setMessage] = useState("no message");
 
   const handleChange = (e) => {
     setData({
@@ -26,6 +28,7 @@ const App = () => {
       data
     );
     console.log(response.data);
+    setMessage(response.data.message);
   };
 
   return (
@@ -79,6 +82,9 @@ const App = () => {
           <input type="number" name="new_price" onChange={handleChange} />
         </div>
         <button onClick={handleSubmit}>Submit</button>
+        <div className="message">
+          <p>{message}</p>
+        </div>
       </div>
     </div>
   );
