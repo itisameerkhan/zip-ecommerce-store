@@ -1,8 +1,8 @@
-import "./Home.scss";
+import "./Category.scss";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Home = () => {
+const Category = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -11,10 +11,10 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="home">
-      <p>home</p>
+    <div className="category">
+        <h1>category</h1>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Category

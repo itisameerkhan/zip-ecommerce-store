@@ -1,0 +1,66 @@
+$primary-color-1: #f41cb2;
+
+.header {
+  padding: 0.5rem 3rem;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  background-color: #101010;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  section {
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+
+    &:hover {
+      color: $primary-color-1;
+    }
+  }
+  .active {
+    color: $primary-color-1;
+  }
+  nav {
+    display: flex;
+    gap: 2rem;
+    font-size: 1.2rem;
+  }
+
+  img {
+    height: 50px;
+    width: 50px;
+  }
+  span {
+    background-color: #606060;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #f41cb2;
+      color: white;
+    }
+  }
+}
+.nav-header-1 {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+
+  p {
+    font-size: 1.5rem;
+  }
+}
