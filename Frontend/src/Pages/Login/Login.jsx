@@ -156,7 +156,7 @@ const Login = () => {
         </div>
         {loading ? (
           <div className="loading-div-1">
-            <span className="loader"></span>
+            <span className="loader1"></span>
           </div>
         ) : (
           <button onClick={handleSubmit}>

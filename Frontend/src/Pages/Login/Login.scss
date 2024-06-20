@@ -118,14 +118,14 @@ $primary-color-1: #f41cb2;
   width: 100%;
   z-index: 2;
 }
-.loader {
+.loader1 {
   width: 35px;
   height: 35px;
   border-radius: 50%;
   position: relative;
   animation: rotate 1s linear infinite;
 }
-.loader::before {
+.loader1::before {
   content: "";
   box-sizing: border-box;
   position: absolute;

@@ -4,12 +4,12 @@ import { useSelector } from "react-redux";
 
 const Latest = () => {
   const products = useSelector((store) => store.product);
-  const latestProducts = products.slice(-4);
+  const latestProducts = products.slice(-8);
   return (
     <div className="latest">
       <p className="latest-title">Latest Products</p>
         <div className="latest-main">
-        {latestProducts.map((data) =>(
+        {latestProducts.reverse().map((data) =>(
             <ProductCard data={data} key={data._id} />
         ) )}
         </div>

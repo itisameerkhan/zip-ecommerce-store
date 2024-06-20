@@ -10,6 +10,8 @@ const App = () => {
     description: "",
     category: "men",
     sub_category: "shirts",
+    old_price: "",
+    new_price: "",
   });
 
   const [message, setMessage] = useState("no message");
@@ -29,6 +31,16 @@ const App = () => {
     );
     console.log(response.data);
     setMessage(response.data.message);
+    setData({
+      name: "",
+      image_url: "",
+      description: "",
+      rating: "",
+      category: "men",
+      sub_category: "shirts",
+      old_price: "",
+      new_price: "",
+    });
   };
 
   return (
@@ -40,15 +52,30 @@ const App = () => {
       <div className="app-main">
         <div>
           <label>Name</label>
-          <input type="text" onChange={handleChange} name="name" />
+          <input
+            type="text"
+            onChange={handleChange}
+            name="name"
+            value={data.name}
+          />
         </div>
         <div>
           <label>Image URL</label>
-          <input type="text" name="image_url" onChange={handleChange} />
+          <input
+            type="text"
+            name="image_url"
+            onChange={handleChange}
+            value={data.image_url}
+          />
         </div>
         <div>
           <label>Description</label>
-          <input type="text" name="description" onChange={handleChange} />
+          <input
+            type="text"
+            name="description"
+            onChange={handleChange}
+            value={data.description}
+          />
         </div>
         <div>
           <label>Category</label>
@@ -71,15 +98,30 @@ const App = () => {
         </div>
         <div>
           <label>Rating</label>
-          <input type="text" name="rating" onChange={handleChange} />
+          <input
+            type="text"
+            name="rating"
+            onChange={handleChange}
+            value={data.rating}
+          />
         </div>
         <div>
           <label>Old Price</label>
-          <input type="number" name="old_price" onChange={handleChange} />
+          <input
+            type="number"
+            name="old_price"
+            onChange={handleChange}
+            value={data.old_price}
+          />
         </div>
         <div>
           <label>New Price</label>
-          <input type="number" name="new_price" onChange={handleChange} />
+          <input
+            type="number"
+            name="new_price"
+            onChange={handleChange}
+            value={data.new_price}
+          />
         </div>
         <button onClick={handleSubmit}>Submit</button>
         <div className="message">

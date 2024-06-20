@@ -1,3 +1,19 @@
 .category {
-    margin: 5rem;
+    margin: 7rem 5rem;
+}
+.product-cards-main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    align-items: center;
+    justify-content: center;
+}
+.category-name {
+    font-size: 2rem;
+    margin: 1rem 1.5rem;
+}
+.category-banner-img {
+    width: 100%;
+    margin-bottom: 5rem;
+    border-radius: 10px;
 }
