@@ -27,8 +27,8 @@ const Header = () => {
           </nav>
         </section>
       )}
-      <Link to={"/"} onClick={handleLogout}>
-        <span className="material-symbols-outlined">logout</span>
+      <Link to={"/"} onClick={handleLogout} className="logout">
+        <span className="material-symbols-outlined ">logout</span>
       </Link>
     </div>
   );

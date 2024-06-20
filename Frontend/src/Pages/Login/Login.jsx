@@ -5,20 +5,19 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 const Login = () => {
-
-  
   const [data, setData] = useState({
     username: "",
     email: "",
     password: "",
   });
-  
+
   const [error, setError] = useState({
     errorStatus: false,
     errorMessage: "null",
   });
   const [isLogin, setIsLogin] = useState(false);
   const [show, setShow] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -30,6 +29,8 @@ const Login = () => {
   };
 
   const handleSubmit = async () => {
+    setLoading(true);
+
     setError({
       errorStatus: true,
       errorMessage: "",
@@ -43,6 +44,7 @@ const Login = () => {
           errorStatus: true,
           errorMessage: "All Fields are required",
         });
+        setLoading(false);
         return;
       }
       const response = await axios.post(
@@ -58,8 +60,10 @@ const Login = () => {
           errorStatus: true,
           errorMessage: response.data.message,
         });
+        setLoading(false);
+        return;
       } else {
-        localStorage.setItem("zip-jwtToken", response.data.jwtToken)
+        localStorage.setItem("zip-jwtToken", response.data.jwtToken);
         navigate("/home");
       }
     } else {
@@ -67,11 +71,12 @@ const Login = () => {
       const emailRegex =
         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-        if (data.username === "" || data.email === "" || data.password === "") {
+      if (data.username === "" || data.email === "" || data.password === "") {
         setError({
           errorStatus: true,
           errorMessage: "All Fields are required",
         });
+        setLoading(false);
         return;
       }
       if (!emailRegex.test(data.email)) {
@@ -85,8 +90,9 @@ const Login = () => {
         setError({
           errorStatus: true,
           errorMessage:
-          "password should contain atleast one number and one special character",
+            "password should contain atleast one number and one special character",
         });
+        setLoading(false);
         return;
       }
       const response = await axios.post(
@@ -98,6 +104,7 @@ const Login = () => {
           errorStatus: true,
           errorMessage: response.data.message,
         });
+        setLoading(false);
         return;
       } else {
         localStorage.setItem("zip-jwtToken", response.data.jwtToken);
@@ -105,12 +112,12 @@ const Login = () => {
       }
     }
   };
-  
+
   useEffect(() => {
     const jwtToken = localStorage.getItem("zip-jwtToken");
-    if(jwtToken !== null) navigate("/home");
-  },[]);
-  
+    if (jwtToken !== null) navigate("/home");
+  }, []);
+
   return (
     <div className="login">
       <div className="login-main">
@@ -147,7 +154,15 @@ const Login = () => {
             <span onClick={() => setShow(!show)}>{show ? "HIDE" : "SHOW"}</span>
           </div>
         </div>
-        <button onClick={handleSubmit}>{isLogin ? "Login" : "Sign up"}</button>
+        {loading ? (
+          <div className="loading-div-1">
+            <span className="loader"></span>
+          </div>
+        ) : (
+          <button onClick={handleSubmit}>
+            {isLogin ? "Login" : "Sign up"}
+          </button>
+        )}
         <div className="account-exists">
           {isLogin ? (
             <p>

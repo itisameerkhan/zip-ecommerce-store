@@ -1,7 +1,7 @@
 $primary-color-1: #f41cb2;
 
 .header {
-  padding: 0.5rem 3rem;
+  padding: 0rem 3rem;
   position: fixed;
   top: 0;
   z-index: 999;
@@ -22,13 +22,15 @@ $primary-color-1: #f41cb2;
     color: white;
     text-decoration: none;
     font-weight: 500;
+    border-bottom: 3px solid transparent;
+    padding:1rem 0;
 
     &:hover {
-      color: $primary-color-1;
+      border-bottom: 3px solid $primary-color-1;
     }
   }
   .active {
-    color: $primary-color-1;
+    border-bottom: 3px solid $primary-color-1;
   }
   nav {
     display: flex;
@@ -63,4 +65,7 @@ $primary-color-1: #f41cb2;
   p {
     font-size: 1.5rem;
   }
+}
+.logout {
+  border: none !important;
 }

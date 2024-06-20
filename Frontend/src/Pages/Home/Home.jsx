@@ -1,6 +1,7 @@
 import "./Home.scss";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Home1 from "../../Components/Home1/Home1";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ const Home = () => {
 
   return (
     <div className="home">
-      <p>home</p>
+      <Home1 />
     </div>
   );
 };
