@@ -1,0 +1,35 @@
+.latest {
+  margin-top: 5rem;
+
+  .latest-title {
+    font-size: 1.5rem;
+  }
+}
+.latest-main {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0;
+  gap: 3rem;
+}
+.product-card {
+  img {
+    height: 280px;
+    width: 210px;
+    object-fit: cover;
+    object-position: center;
+  }
+  background-color: #606060;
+  padding: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  border:2px solid transparent;
+  transition: all 200ms ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  color: white;
+
+  &:hover {
+    border:2px solid white;
+  }
+}

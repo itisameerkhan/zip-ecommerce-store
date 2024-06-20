@@ -4,6 +4,9 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Login from "./Pages/Login/Login.jsx";
 import Home from "./Pages/Home/Home.jsx";
 import Category from "./Pages/Category/Category.jsx";
+import { Provider } from "react-redux";
+import appStore from "./Contexts/appStore.js";
+import Product from "./Pages/Product/Product.jsx";
 
 const appRouter = createBrowserRouter([
   {
@@ -30,10 +33,16 @@ const appRouter = createBrowserRouter([
         path: "/shop/kids",
         element: <Category />,
       },
+      {
+        path: "/products/shop/:id",
+        element: <Product />,
+      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <RouterProvider router={appRouter} />
+  <Provider store={appStore}>
+    <RouterProvider router={appRouter} />
+  </Provider>
 );
