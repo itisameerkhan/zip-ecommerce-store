@@ -20,18 +20,19 @@ const Category = () => {
   });
 
   const getData = async () => {
+    console.log("called");
     const response = await axios.get("http://localhost:8080/api/store/getdata");
     dispatch(addProducts(response.data.data));
+    const filterData = response.data.data.filter((data) => {
+      if (location.pathname === "/shop/men") return data.category === "men";
+      else if (location.pathname === "/shop/women")
+        return data.category === "women";
+      else if (location.pathname === "/shop/kids")
+        return data.category === "kids";
+    });
+    
     setProductData(response.data.data);
-    setFilteredData(
-      productData.filter((data) => {
-        if (location.pathname === "/shop/men") return data.category === "men";
-        else if (location.pathname === "/shop/women")
-          return data.category === "women";
-        else if (location.pathname === "/shop/kids")
-          return data.category === "kids";
-      })
-    );
+    setFilteredData(filterData);
 
     if (location.pathname === "/shop/men") {
       setCategoryData({
@@ -58,7 +59,7 @@ const Category = () => {
     const jwtToken = localStorage.getItem("zip-jwtToken");
     if (jwtToken === null) navigate("/");
     getData();
-  }, [location.pathname, filteredData]);
+  }, [location.pathname]);
 
   return (
     <div className="category">

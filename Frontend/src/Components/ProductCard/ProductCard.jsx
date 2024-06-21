@@ -17,10 +17,7 @@ const ProductCard = (props) => {
   return (
     <Link to={`/products/shop/${_id}`}>
       <div className="product-card">
-        <img
-          src={`${image_url}`}
-          alt="img"
-        />
+        <img src={`${image_url}`} alt="img" />
         <div>
           <p>{name}</p>
           <p>{category}</p>
@@ -28,6 +25,10 @@ const ProductCard = (props) => {
             <span>₹ {new_price}</span>
           </p>
         </div>
+        <button>
+          ADD TO CART
+          <span className="material-symbols-outlined">shopping_cart</span>
+        </button>
       </div>
     </Link>
   );

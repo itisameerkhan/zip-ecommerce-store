@@ -1,9 +1,11 @@
 import "./Product.scss";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Product = () => {
   const navigate = useNavigate();
+  const params = useParams();
+
 
   useEffect(() => {
     const jwtToken = localStorage.getItem("zip-jwtToken");
