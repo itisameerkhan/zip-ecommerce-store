@@ -69,3 +69,7 @@ $primary-color-1: #f41cb2;
 .logout {
   border: none !important;
 }
+.header-right {
+  display: flex;
+  gap: 2rem;
+}

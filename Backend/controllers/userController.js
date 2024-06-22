@@ -60,3 +60,46 @@ export const loginFunction = async (req, res, next) => {
     next(e);
   }
 };
+
+export const handleCartFunction = async (req, res, next) => {
+  try {
+    console.log(req.body);
+    const { jwtToken, name, image_url, new_price } = req.body;
+    const jwtAuth = await jwt.decode(jwtToken, process.env.JWT_SECRET);
+    const userResponse = await User.find({ email: jwtAuth.email });
+    const response = await User.updateOne(
+      { email: userResponse[0].email },
+      {
+        $push: {
+          cart: {
+            name,
+            image_url,
+            new_price,
+          },
+        },
+      }
+    );
+    res.json({
+      success: true,
+      message: "data updated successfully",
+      response: response,
+    });
+  } catch (e) {
+    next(e);
+  }
+};
+
+export const getCartDataFunction = async (req, res, next) => {
+  try {
+    const { jwtToken } = req.body;
+    const jwtAuth = await jwt.decode(jwtToken, process.env.JWT_SECRET);
+    const userResponse = await User.findOne({ email: jwtAuth.email });
+    res.json({
+      success: true,
+      message: "cart data",
+      data: userResponse.cart,
+    });
+  } catch (e) {
+    next(e);
+  }
+};

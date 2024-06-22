@@ -18,6 +18,25 @@ const Product = () => {
     setData(response.data.data);
   };
 
+  const handleSubmit = async () => {
+    console.log("handle submit");
+    const jwtToken = localStorage.getItem("zip-jwtToken");
+    const response = await axios.post(
+      "http://localhost:8080/api/user/handleCart",
+      {
+        jwtToken: jwtToken,
+        name: data.name,
+        image_url: data.image_url,
+        description: data.description,
+        category: data.category,
+        sub_category: data.sub_category,
+        rating: data.rating,
+        new_price: data.new_price,
+        old_price: data.old_price,
+      }
+    );
+  };
+
   useEffect(() => {
     const jwtToken = localStorage.getItem("zip-jwtToken");
     if (jwtToken === null) navigate("/");
@@ -50,7 +69,7 @@ const Product = () => {
             <p>XLL</p>
           </div>
           <div className="p-m-3">
-            <button>ADD TO CART</button>
+            <button onClick={handleSubmit}>ADD TO CART</button>
             <button>BUY NOW</button>
           </div>
           <div className="p-m-4">
@@ -65,7 +84,7 @@ const Product = () => {
           </div>
           <div className="p-m-5">
             <p>
-             *  Quality is guaranteed. If there is a print error or visible
+              * Quality is guaranteed. If there is a print error or visible
               quality issue, we'll replace or refund it.
             </p>
             <p>* We do not accept general returns or sizing-related returns.</p>

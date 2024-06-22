@@ -1,5 +1,6 @@
 import "./ProductCard.scss";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const ProductCard = (props) => {
   const {

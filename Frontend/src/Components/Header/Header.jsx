@@ -27,9 +27,16 @@ const Header = () => {
           </nav>
         </section>
       )}
-      <Link to={"/"} onClick={handleLogout} className="logout">
-        <span className="material-symbols-outlined ">logout</span>
-      </Link>
+      {location.pathname !== "/" && (
+        <div className="header-right">
+          <Link to={"/checkout/cart"} className="logout">
+            <span className="material-symbols-outlined">shopping_bag</span>
+          </Link>
+          <Link to={"/"} onClick={handleLogout} className="logout">
+            <span className="material-symbols-outlined ">logout</span>
+          </Link>
+        </div>
+      )}
     </div>
   );
 };

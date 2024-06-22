@@ -7,6 +7,7 @@ import Category from "./Pages/Category/Category.jsx";
 import { Provider } from "react-redux";
 import appStore from "./Contexts/appStore.js";
 import Product from "./Pages/Product/Product.jsx";
+import AddToCart from "./Pages/AddToCart/AddToCart.jsx";
 
 const appRouter = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/products/shop/:id",
         element: <Product />,
+      },
+      {
+        path: "/checkout/cart",
+        element: <AddToCart />,
       },
     ],
   },
