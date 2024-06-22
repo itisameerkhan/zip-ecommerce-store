@@ -6,6 +6,7 @@ import { useState } from "react";
 import ProductCard from "../../Components/ProductCard/ProductCard";
 import axios from "axios";
 import { addProducts } from "../../Contexts/productSlice";
+import Loader from "../../Components/Loader/Loader";
 
 const Category = () => {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ const Category = () => {
       else if (location.pathname === "/shop/kids")
         return data.category === "kids";
     });
-    
+
     setProductData(response.data.data);
     setFilteredData(filterData);
 
@@ -61,12 +62,18 @@ const Category = () => {
     getData();
   }, [location.pathname]);
 
+  if (productData.length === 0) return <Loader />;
+
   return (
     <div className="category">
       <p className="category-name">{categoryData.categoryName}</p>
-      <img src={categoryData.bannerImg} alt="bannerimg" className="category-banner-img" />
+      <img
+        src={categoryData.bannerImg}
+        alt="bannerimg"
+        className="category-banner-img"
+      />
       <div className="product-cards-main">
-        {filteredData.map((data) => (
+        {filteredData.reverse().map((data) => (
           <ProductCard data={data} key={data._id} />
         ))}
       </div>
