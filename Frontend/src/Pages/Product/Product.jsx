@@ -6,7 +6,6 @@ const Product = () => {
   const navigate = useNavigate();
   const params = useParams();
 
-
   useEffect(() => {
     const jwtToken = localStorage.getItem("zip-jwtToken");
     if (jwtToken === null) navigate("/");
